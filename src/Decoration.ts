@@ -1,0 +1,3 @@
+type Decoration = {
+    decorationText: string,
+};

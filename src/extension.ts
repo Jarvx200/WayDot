@@ -16,6 +16,10 @@ export function activate(context: vscode.ExtensionContext) {
 		await DotCommands.listDotsCommand(context);
 	});
 
+	const removeDotsCommandEntry = vscode.commands.registerCommand('waydot.removeDot', async () => {
+		await DotCommands.removeDotsCommand(context);
+	});
+
 	context.subscriptions.push(addDotCommandEntry);
 	context.subscriptions.push(listDotsCommandEntry);
 }

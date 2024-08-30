@@ -1,8 +1,9 @@
 import * as vscode from 'vscode';
 import Handlers from '../handlers';
 import {Dot} from '../Dot';
+import dotsToSelections from '../utils/dotsToSelection';
 
-type DotSelectionType = {
+export type DotSelectionType = {
     label: string,
     detail: string,
     id?: string,
@@ -10,30 +11,8 @@ type DotSelectionType = {
 };
 
 const listDotsCommand = async (context: vscode.ExtensionContext) : Promise<boolean> => {
-    let allDotsObjects : Dot[] | null = Handlers.listDotsHandler(context);
-
-    if(!allDotsObjects){
-        return false;
-    }
-
-
-    let dotList : DotSelectionType[] = [];
-
-    for(let dot of allDotsObjects){
-        dotList.push({
-            label: `${dot.dotIcon} - ${dot.dotName}`,
-            detail: `${dot.dotFilePath} at ${dot.dotTime}`,
-            id: dot.dotId,
-            link: dot.dotFilePath
-        });
-    }
-
-    if(dotList.length === 0){
-        dotList.push({
-            label: "No Dots Created",
-            detail: "Use Add Dot command to create one!",
-        });
-    }
+    
+    let dotList : DotSelectionType[] = dotsToSelections(context);
 
     const waydotList = await vscode.window.showQuickPick(dotList, {
         canPickMany: false,

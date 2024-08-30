@@ -1,15 +1,25 @@
 import * as vscode from 'vscode';
-import { Dot, DotConstructorArgs } from '../Dot';
+import { Dot} from '../Dot';
 
-const addDecoration = (context: vscode.ExtensionContext, dot: DotConstructorArgs) : boolean => {
+export type PersistentDecoration = {
+    decoration?: vscode.TextEditorDecorationType,
+    range?: vscode.Range[]
+};
+
+const addDecoration = (context: vscode.ExtensionContext, dot: Dot) : boolean => {
     
     const newDecoration = vscode.window.createTextEditorDecorationType({
         before:{
-            contentText: dot.dotIcon + dot.dotName,
-            margin: "0 0 0 0",
-            backgroundColor: "#FFFFF"
+            contentText: dot.dotIcon,
+            margin: "0 0.5em 0 0",
+            backgroundColor: "#000000",
         },
-        
+        after:{
+            contentText: dot.dotIcon,
+            margin: "0 0 0 0.5em",
+            backgroundColor: "#000000",
+        },
+
         isWholeLine: true,
     });
 
@@ -19,6 +29,8 @@ const addDecoration = (context: vscode.ExtensionContext, dot: DotConstructorArgs
         vscode.window.activeTextEditor.setDecorations(newDecoration, [decRange]);
     }
     
+    dot.decoration = newDecoration;
+    dot.range = [decRange];
     return true;
 };
 

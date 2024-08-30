@@ -1,4 +1,6 @@
 import {v4} from "uuid";
+import { PersistentDecoration } from "./handlers/decorationHandler";
+
 export interface DotConstructorArgs{
     dotFilePath : string;
     dotWorkspace : string;
@@ -8,7 +10,7 @@ export interface DotConstructorArgs{
 };
 
 
-export interface Dot extends DotConstructorArgs{
+export interface Dot extends DotConstructorArgs, PersistentDecoration{
     dotId: string;
     dotTime: Date;
 }

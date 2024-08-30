@@ -2,6 +2,7 @@ import addDotHandler from "./addDotHandler";
 import { addDecoration } from "./decorationHandler";
 import getDotHandler from "./getDotHandler";
 import listDotsHandler from "./listDotsHandler";
+import removeDotHandler from "./removeDotHandler";
 
 
 
@@ -10,6 +11,7 @@ const Handlers = {
     listDotsHandler,
     getDotHandler,
     addDecoration,
+    removeDotHandler
 };
 
 
