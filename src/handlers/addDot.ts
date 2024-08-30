@@ -1,8 +1,9 @@
 import * as vscode from 'vscode';
-import Dot, { DotConstructorArgs } from "../Dot";
+import { DotConstructorArgs, Dot} from "../Dot";
+import createDot from '../Dot';
 
 const addDot = (args: DotConstructorArgs, context: vscode.ExtensionContext) : boolean => {
-    let newDot = new Dot(args);
+    let newDot = createDot(args);
     let updatedDots : Dot[] | undefined = context.globalState.get<Dot[]>("waydot.Dots");
 
     if(updatedDots){

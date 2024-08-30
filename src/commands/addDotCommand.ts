@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import Dot,{ DotConstructorArgs } from '../Dot';
+import { DotConstructorArgs, Dot } from '../Dot';
 import addDot from '../handlers/addDot';
 
 type EmojiSelectionType = {

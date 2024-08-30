@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import Handlers from '../handlers';
-import Dot from '../Dot';
+import {Dot} from '../Dot';
 
 type DotSelectionType = {
     label: string,

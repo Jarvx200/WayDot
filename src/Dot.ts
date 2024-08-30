@@ -1,5 +1,5 @@
-import {v4} from "uuid"
-export type DotConstructorArgs = {
+import {v4} from "uuid";
+export interface DotConstructorArgs{
     dotFilePath : string;
     dotWorkspace : string;
     dotLine : number;
@@ -7,29 +7,20 @@ export type DotConstructorArgs = {
     dotIcon : string;
 };
 
-//TODO: file path link
 
-class Dot{
+export interface Dot extends DotConstructorArgs{
     dotId: string;
-    dotFilePath : string;
-    dotWorkspace : string;
-    dotLine : number;
-    dotName : string;
-    dotIcon : string;
     dotTime: Date;
+}
 
-    constructor({dotFilePath, dotWorkspace, dotLine, dotName, dotIcon}: DotConstructorArgs){
-        this.dotFilePath=dotFilePath;
-        this.dotWorkspace=dotWorkspace;
-        this.dotLine=dotLine;
-        this.dotName = dotName;
-        this.dotIcon = dotIcon;
-        this.dotTime = new Date();
-        this.dotId = v4();
-    }
-
-
+const createDot = (args: DotConstructorArgs) : Dot => {
+    let dot : Dot = {
+        ...args,
+        dotId: v4(),
+        dotTime: new Date(),
+    };
+    return dot;
 }
 
 
-export default Dot;
+export default createDot;
