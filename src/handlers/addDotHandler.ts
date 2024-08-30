@@ -2,8 +2,7 @@ import * as vscode from 'vscode';
 import { DotConstructorArgs, Dot} from "../Dot";
 import createDot from '../Dot';
 
-const addDotHandler = (args: DotConstructorArgs, context: vscode.ExtensionContext) : boolean => {
-    let newDot = createDot(args);
+const addDotHandler = (newDot: Dot, context: vscode.ExtensionContext) : boolean => {
     let updatedDots : Dot[] | undefined = context.globalState.get<Dot[]>("waydot.Dots");
 
     if(updatedDots){
