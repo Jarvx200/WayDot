@@ -1,9 +1,9 @@
-import addDot from "./addDot";
+import addDotCommand from "./addDotCommand";
+import listDotsCommand from "./listDotsCommand";
 
-
-const Commands = {
-    addDot,
+const DotCommands = {
+    addDotCommand,
+    listDotsCommand
 };
 
-
-export default Commands;
+export default DotCommands;

@@ -24,6 +24,10 @@
       {
         "command": "waydot.changeDotIcon",
         "title": "Change Dot Icon"
+      },
+      {
+        "command": "waydot.listDots",
+        "title": "List Dots"
       }
     ]
   },

@@ -7,6 +7,8 @@ export type DotConstructorArgs = {
     dotIcon : string;
 };
 
+//TODO: file path link
+
 class Dot{
     dotFilePath : string;
     dotWorkspace : string;
