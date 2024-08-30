@@ -1,4 +1,4 @@
-
+import {v4} from "uuid"
 export type DotConstructorArgs = {
     dotFilePath : string;
     dotWorkspace : string;
@@ -10,6 +10,7 @@ export type DotConstructorArgs = {
 //TODO: file path link
 
 class Dot{
+    dotId: string;
     dotFilePath : string;
     dotWorkspace : string;
     dotLine : number;
@@ -24,6 +25,7 @@ class Dot{
         this.dotName = dotName;
         this.dotIcon = dotIcon;
         this.dotTime = new Date();
+        this.dotId = v4();
     }
 
 

@@ -4,7 +4,6 @@ import addDot from '../handlers/addDot';
 
 type EmojiSelectionType = {
     label: string,
-    detail: string
 };
 
 
@@ -31,11 +30,11 @@ const addDotCommand = async(context: vscode.ExtensionContext) => {
 
 
     const emojiOptions : EmojiSelectionType[] = [
-        {label: "🐛", detail: "Bug"},
-        {label: "💡", detail: "Idea"},
-        {label: "⚙️", detail: "Refactor"},
-        {label: "🧑‍🔬", detail: "Test"},
-        {label: "📑", detail: "Default"}
+        {label: "🐛 Bug"},
+        {label: "💡 Idea"},
+        {label: "⚙️ Refactor"},
+        {label: "🧑‍🔬 Test"},
+        {label: "📑 Default"}
         //TODO: more to be added + custom user settings
     ];
 
@@ -45,15 +44,22 @@ const addDotCommand = async(context: vscode.ExtensionContext) => {
         placeHolder: "Select one option!"
     });
 
+    const activeEditor = vscode.window.activeTextEditor;
 
-    let filePath = vscode.window.activeTextEditor?.document.uri.fsPath;
+    let filePath : string | undefined;
+    let lineNumber : number | undefined;
+    if (activeEditor){
+        filePath = vscode.window.activeTextEditor?.document.uri.fsPath;
+        lineNumber = activeEditor?.selection.active.line;
+    }
 
-    let workspaceFoler = vscode.workspace.workspaceFolders?.at(0);
+    let workspaceFolderName : string | undefined = vscode.workspace.workspaceFolders?.at(0)?.name;
+
 
     
     newDotInfo.dotIcon = waydotIcon ? waydotIcon.label : "📑";
-    newDotInfo.dotLine = 0;
-    newDotInfo.dotWorkspace = "no workspace";
+    newDotInfo.dotLine = lineNumber || 0;
+    newDotInfo.dotWorkspace = workspaceFolderName || "";
     newDotInfo.dotFilePath = filePath || "no file";
 
     addDot(newDotInfo,context);
