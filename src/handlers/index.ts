@@ -1,17 +1,12 @@
-import addDotHandler from "./addDotHandler";
 import { addDecoration } from "./decorationHandler";
-import getDotHandler from "./getDotHandler";
-import listDotsHandler from "./listDotsHandler";
-import removeDotHandler from "./removeDotHandler";
+import { DotHandlers } from "./dotHandlers";
+
 
 
 
 const Handlers = {
-    addDotHandler,
-    listDotsHandler,
-    getDotHandler,
+    DotHandlers,
     addDecoration,
-    removeDotHandler
 };
 
 

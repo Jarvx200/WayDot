@@ -65,7 +65,7 @@ const addDotCommand = async(context: vscode.ExtensionContext) => {
 
     let newDot:Dot = createDot(newDotInfo);
 
-    Handlers.addDotHandler(newDot, context);
+    Handlers.DotHandlers.addDotHandler(newDot, context);
 
     if(waydotIcon?.label.split(" ")[0] && lineNumber){
         Handlers.addDecoration(context, newDot);

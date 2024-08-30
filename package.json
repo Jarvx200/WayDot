@@ -18,8 +18,8 @@
         "title": "Add Dot"
       },
       {
-        "command": "waydot.removeDot",
-        "title": "Remove Dot"
+        "command": "waydot.removeDots",
+        "title": "Remove Dots"
       },
       {
         "command": "waydot.changeDotIcon",

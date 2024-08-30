@@ -1,10 +1,10 @@
 import { DotSelectionType } from "../commands/listDotsCommand";
 import { Dot } from "../Dot";
 import Handlers from "../handlers";
-import * as vscode from "vscode"
+import * as vscode from "vscode";
 
 const dotsToSelections = (context: vscode.ExtensionContext) : DotSelectionType[] => {
-    let allDotsObjects : Dot[] | null = Handlers.listDotsHandler(context);
+    let allDotsObjects : Dot[] | null = Handlers.DotHandlers.listDotsHandler(context);
 
     if(!allDotsObjects){
         return [];
@@ -32,4 +32,4 @@ const dotsToSelections = (context: vscode.ExtensionContext) : DotSelectionType[]
     return dotList;
 };
 
-export default dotsToSelections
+export default dotsToSelections;

@@ -19,7 +19,7 @@ const listDotsCommand = async (context: vscode.ExtensionContext) : Promise<boole
     });
 
     if(waydotList?.link && waydotList?.id){
-        const dot : Dot | null = Handlers.getDotHandler(context, waydotList.id);
+        const dot : Dot | null = Handlers.DotHandlers.getDotHandler(context, waydotList.id);
         if(dot){
             const documnet = await vscode.workspace.openTextDocument(vscode.Uri.file(dot.dotFilePath));
             vscode.window.showTextDocument(documnet);
