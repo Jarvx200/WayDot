@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import Dot,{ DotConstructorArgs } from '../Dot';
+import addDot from '../handlers/addDot';
 
 type EmojiSelectionType = {
     label: string,
@@ -44,11 +45,18 @@ const addDotCommand = async(context: vscode.ExtensionContext) => {
         placeHolder: "Select one option!"
     });
 
+
+    let filePath = vscode.window.activeTextEditor?.document.uri.fsPath;
+
+    let workspaceFoler = vscode.workspace.workspaceFolders?.at(0);
+
     
     newDotInfo.dotIcon = waydotIcon ? waydotIcon.label : "📑";
     newDotInfo.dotLine = 0;
-    newDotInfo.dotWorkspace = "aa";
-    newDotInfo.dotFilePath = "aa";
+    newDotInfo.dotWorkspace = "no workspace";
+    newDotInfo.dotFilePath = filePath || "no file";
+
+    addDot(newDotInfo,context);
 
 };
 

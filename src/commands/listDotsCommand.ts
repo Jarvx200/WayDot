@@ -5,6 +5,7 @@ import Dot from '../Dot';
 type DotSelectionType = {
     label: string,
     detail: string,
+    link?: string
 };
 
 const listDotsCommand = async (context: vscode.ExtensionContext) : Promise<boolean> => {
@@ -20,14 +21,15 @@ const listDotsCommand = async (context: vscode.ExtensionContext) : Promise<boole
     for(let dot of allDotsObjects){
         dotList.push({
             label: `${dot.dotIcon} - ${dot.dotName}`,
-            detail: `${dot.dotFilePath} at ${dot.dotTime}`
+            detail: `${dot.dotFilePath} at ${dot.dotTime}`,
+            link: dot.dotFilePath
         });
     }
 
     if(dotList.length === 0){
         dotList.push({
             label: "No Dots Created",
-            detail: "Use Add Dot command to create one!"
+            detail: "Use Add Dot command to create one!",
         });
     }
 
@@ -35,6 +37,10 @@ const listDotsCommand = async (context: vscode.ExtensionContext) : Promise<boole
         canPickMany: false,
     });
 
+    if(waydotList?.link){
+        const documnet = await vscode.workspace.openTextDocument(vscode.Uri.file(waydotList.link));
+        vscode.window.showTextDocument(documnet);
+    }
     return true;
 
 };
