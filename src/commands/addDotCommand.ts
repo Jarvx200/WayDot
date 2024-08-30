@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { DotConstructorArgs, Dot } from '../Dot';
-import addDot from '../handlers/addDot';
+import Handlers from '../handlers';
 
 type EmojiSelectionType = {
     label: string,
@@ -10,7 +10,7 @@ type EmojiSelectionType = {
 
 const addDotCommand = async(context: vscode.ExtensionContext) => {
 
-    let newDotInfo: DotConstructorArgs = {
+    let newDotInfo: DotConstructorArgs  = {
         dotFilePath: "",
         dotIcon:"",
         dotLine:-1,
@@ -62,7 +62,7 @@ const addDotCommand = async(context: vscode.ExtensionContext) => {
     newDotInfo.dotWorkspace = workspaceFolderName || "";
     newDotInfo.dotFilePath = filePath || "no file";
 
-    addDot(newDotInfo,context);
+    Handlers.addDotHandler(newDotInfo,context);
 
 };
 

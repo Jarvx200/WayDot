@@ -20,7 +20,7 @@ const createDot = (args: DotConstructorArgs) : Dot => {
         dotTime: new Date(),
     };
     return dot;
-}
+};
 
 
 export default createDot;

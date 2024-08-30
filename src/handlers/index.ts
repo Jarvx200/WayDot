@@ -1,11 +1,13 @@
-import addDot from "./addDot";
+import addDotHandler from "./addDotHandler";
+import getDotHandler from "./getDotHandler";
 import listDotsHandler from "./listDotsHandler";
 
 
 
 const Handlers = {
-    addDot,
+    addDotHandler,
     listDotsHandler,
+    getDotHandler,
 };
 
 

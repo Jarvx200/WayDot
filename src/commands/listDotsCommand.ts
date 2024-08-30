@@ -5,6 +5,7 @@ import {Dot} from '../Dot';
 type DotSelectionType = {
     label: string,
     detail: string,
+    id?: string,
     link?: string
 };
 
@@ -22,6 +23,7 @@ const listDotsCommand = async (context: vscode.ExtensionContext) : Promise<boole
         dotList.push({
             label: `${dot.dotIcon} - ${dot.dotName}`,
             detail: `${dot.dotFilePath} at ${dot.dotTime}`,
+            id: dot.dotId,
             link: dot.dotFilePath
         });
     }
@@ -37,9 +39,19 @@ const listDotsCommand = async (context: vscode.ExtensionContext) : Promise<boole
         canPickMany: false,
     });
 
-    if(waydotList?.link){
-        const documnet = await vscode.workspace.openTextDocument(vscode.Uri.file(waydotList.link));
-        vscode.window.showTextDocument(documnet);
+    if(waydotList?.link && waydotList?.id){
+        const dot : Dot | null = Handlers.getDotHandler(context, waydotList.id);
+        if(dot){
+            const documnet = await vscode.workspace.openTextDocument(vscode.Uri.file(dot.dotFilePath));
+            vscode.window.showTextDocument(documnet);
+            
+            const linePosition : vscode.Position = new vscode.Position(dot.dotLine, 0);
+            if(vscode.window.activeTextEditor){
+                vscode.window.activeTextEditor.selection = new vscode.Selection(linePosition, linePosition);
+                vscode.window.activeTextEditor.revealRange(new vscode.Range(linePosition, linePosition), vscode.TextEditorRevealType.InCenter);
+            }
+        }
+        
     }
     return true;
 
