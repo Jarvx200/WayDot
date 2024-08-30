@@ -1,5 +1,7 @@
 # Waydot
 
+![Logo](../waypoint/src/media/icons/Logo.png)
+
 Waydot is an extension that allow you to set waydots in yout codebase, giving them an **icon** and **name**, that can be user defined so we can search them later. 
 
 The icons are **emojis with labels** that help in keeping track of your code.
