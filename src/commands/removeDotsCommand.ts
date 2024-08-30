@@ -5,11 +5,11 @@ import Handlers from "../handlers";
 
 const removeDotsCommand = async (context:vscode.ExtensionContext) : Promise<boolean> => {
     const dotList:DotSelectionType[] = dotsToSelections(context);
-    const waydotList = await vscode.window.showQuickPick(dotList, {
+    const waydotItem = await vscode.window.showQuickPick(dotList, {
         canPickMany: true,
     });
 
-    waydotList?.forEach((dot)=>{
+    waydotItem?.forEach((dot)=>{
         if(dot.id){
             Handlers.DotHandlers.removeDotHandler(context, dot.id);
         }

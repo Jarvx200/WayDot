@@ -1,6 +1,7 @@
 {
   "name": "waydot",
   "displayName": "Waydot",
+  "author": "Jarvx",
   "description": "Waydots in your code",
   "version": "0.0.1",
   "engines": {
@@ -22,8 +23,8 @@
         "title": "Remove Dots"
       },
       {
-        "command": "waydot.changeDotIcon",
-        "title": "Change Dot Icon"
+        "command": "waydot.changeDot",
+        "title": "Change Dot Property"
       },
       {
         "command": "waydot.listDots",

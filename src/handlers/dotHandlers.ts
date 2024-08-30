@@ -47,11 +47,30 @@ const removeDotHandler = (context: vscode.ExtensionContext, uuid: string) : bool
     return true;
 };
 
+const changeDotField = <T extends keyof Dot>(context: vscode.ExtensionContext, uuid: string, propertyName: T, propertyUpdateValue: Dot[T]) : boolean => {
+    const dotToBeFound : Dot | null= getDotHandler(context, uuid);
+
+    const updateDots : Dot[] | undefined = context.globalState.get<Dot[]>("waydot.Dots");
+
+    let dotIndex = 0;
+    if(dotToBeFound && updateDots){
+        dotIndex = updateDots.indexOf(dotToBeFound);
+        updateDots[dotIndex][propertyName] = propertyUpdateValue;
+    }
+
+    console.log(updateDots);
+    context.globalState.update("waydot.Dots", updateDots);
+
+    
+    return true;
+};
+
 export const DotHandlers = {
     getDotHandler,
     removeDotHandler,
     listDotsHandler,
-    addDotHandler
+    addDotHandler,
+    changeDotField
 };
 
 

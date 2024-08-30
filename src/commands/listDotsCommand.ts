@@ -3,23 +3,30 @@ import Handlers from '../handlers';
 import {Dot} from '../Dot';
 import dotsToSelections from '../utils/dotsToSelection';
 
-export type DotSelectionType = {
+
+
+export interface DefaultSelectionType{
     label: string,
     detail: string,
+};
+
+export interface DotSelectionType extends DefaultSelectionType {
+   
     id?: string,
     link?: string
 };
+
 
 const listDotsCommand = async (context: vscode.ExtensionContext) : Promise<boolean> => {
     
     let dotList : DotSelectionType[] = dotsToSelections(context);
 
-    const waydotList = await vscode.window.showQuickPick(dotList, {
+    const waydotItem = await vscode.window.showQuickPick(dotList, {
         canPickMany: false,
     });
 
-    if(waydotList?.link && waydotList?.id){
-        const dot : Dot | null = Handlers.DotHandlers.getDotHandler(context, waydotList.id);
+    if(waydotItem?.link && waydotItem?.id){
+        const dot : Dot | null = Handlers.DotHandlers.getDotHandler(context, waydotItem.id);
         if(dot){
             const documnet = await vscode.workspace.openTextDocument(vscode.Uri.file(dot.dotFilePath));
             vscode.window.showTextDocument(documnet);
