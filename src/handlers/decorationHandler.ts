@@ -1,9 +1,10 @@
 import * as vscode from 'vscode';
 import { Dot} from '../Dot';
+import Handlers from '.';
 
 export type PersistentDecoration = {
     decoration?: vscode.TextEditorDecorationType,
-    range?: vscode.Range[]
+    range?: vscode.Range
 };
 
 const addDecoration = (context: vscode.ExtensionContext, dot: Dot) : boolean => {
@@ -30,8 +31,30 @@ const addDecoration = (context: vscode.ExtensionContext, dot: Dot) : boolean => 
     }
     
     dot.decoration = newDecoration;
-    dot.range = [decRange];
+    dot.range = decRange;
     return true;
 };
 
-export {addDecoration};
+
+
+const showDecorationsOfFile = (context: vscode.ExtensionContext, filePath: string, editor:vscode.TextEditor):boolean=>{
+    let dots = Handlers.DotHandlers.listDotsHandler(context);
+
+    if(!dots){
+        return false;
+    }
+
+    
+    dots.forEach((dot)=>{
+        if(dot.dotFilePath === filePath){
+            console.log(dot.range);
+            if(dot.decoration && dot.range){
+                addDecoration(context, dot);
+            }
+        }
+    });
+
+    return true;;
+};
+
+export const DecorationHandlers =  {addDecoration, showDecorationsOfFile};

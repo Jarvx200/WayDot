@@ -1,4 +1,4 @@
-import { addDecoration } from "./decorationHandler";
+import { DecorationHandlers } from "./decorationHandler";
 import { DotHandlers } from "./dotHandlers";
 
 
@@ -6,7 +6,7 @@ import { DotHandlers } from "./dotHandlers";
 
 const Handlers = {
     DotHandlers,
-    addDecoration,
+    DecorationHandlers,
 };
 
 
