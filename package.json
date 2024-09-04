@@ -3,6 +3,12 @@
   "displayName": "Waydot",
   "author": "Jarvx",
   "description": "Waydots in your code",
+  "icon": "./src/media/icons/Logo.png",
+  "publisher": "Jarvx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jarvx200/WayDot"
+  },
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.92.0"
