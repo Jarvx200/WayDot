@@ -33,11 +33,11 @@ export function activate(context: vscode.ExtensionContext) {
 			const linesChangeStart : number = change.range.start.line + 1;
 
 			dots?.forEach((dot)=>{
-				if(linesAdded > 0 && dot.dotLine > linesChangeStart){
+				if(linesAdded > 0 && dot.dotLine >= linesChangeStart){
 					dot.dotLine += linesAdded;	
 				}
-				else if(linesAdded < 0 && dot.dotLine < linesChangeStart){
-					dot.dotLine -= (linesAdded+1);
+				else if(linesAdded < 0 && dot.dotLine <= linesChangeStart){
+					dot.dotLine += (linesAdded+1);
 				}
 
 				Handlers.DotHandlers.changeDotField(context, dot.dotId, 'dotLine', dot.dotLine);

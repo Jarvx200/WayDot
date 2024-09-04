@@ -15,10 +15,10 @@ The icons are **emojis with labels** that help in keeping track of your code.
 - [x] Can jump to other dots
 - [x] Make decorations persistent between file close/open
 - [x] Have user defined icons for dots 
+- [x] Update dot location based on decoration movement
 
 ## TODO:
 
-- [ ] Update dot location based on decoration movement
 - [ ] Make dots persistend between sessions
 - [ ] Git integration
-- [ ] BST for decoration updating
+- [ ] BST for node position updating
