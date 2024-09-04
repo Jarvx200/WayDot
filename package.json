@@ -3,8 +3,8 @@
   "displayName": "Waydot",
   "author": "Jarvx",
   "description": "Waydots in your code",
-  "icon": "./src/media/icons/Logo.png",
-  "publisher": "Jarvx",
+  "icon": "./media/icons/Logo.png",
+  "publisher": "Jarvx404",
   "repository": {
     "type": "git",
     "url": "https://github.com/Jarvx200/WayDot"
