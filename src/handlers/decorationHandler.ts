@@ -47,7 +47,6 @@ const showDecorationsOfFile = (context: vscode.ExtensionContext, filePath: strin
     
     dots.forEach((dot)=>{
         if(dot.dotFilePath === filePath){
-            console.log(dot.range);
             if(dot.decoration && dot.range){
                 addDecoration(context, dot);
             }

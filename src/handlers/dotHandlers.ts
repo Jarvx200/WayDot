@@ -58,7 +58,6 @@ const changeDotField = <T extends keyof Dot>(context: vscode.ExtensionContext, u
         updateDots[dotIndex][propertyName] = propertyUpdateValue;
     }
 
-    console.log(updateDots);
     context.globalState.update("waydot.Dots", updateDots);
 
     
