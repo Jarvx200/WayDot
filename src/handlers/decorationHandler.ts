@@ -56,5 +56,5 @@ const showDecorationsOfFile = (context: vscode.ExtensionContext, filePath: strin
 
     return true;;
 };
-
+ 
 export const DecorationHandlers =  {addDecoration, showDecorationsOfFile};

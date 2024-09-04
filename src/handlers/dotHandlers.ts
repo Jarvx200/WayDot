@@ -65,6 +65,7 @@ const changeDotField = <T extends keyof Dot>(context: vscode.ExtensionContext, u
     return true;
 };
 
+
 export const DotHandlers = {
     getDotHandler,
     removeDotHandler,
