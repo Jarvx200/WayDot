@@ -13,11 +13,12 @@ The icons are **emojis with labels** that help in keeping track of your code.
 - [x] Can CRUD dots
 - [x] Can change dot details 
 - [x] Can jump to other dots
+- [x] Make decorations persistent between file close/open
+- [x] Have user defined icons for dots 
 
 ## TODO:
 
 - [ ] Update dot location based on decoration movement
-- [ ] Make decorations persistent between file close/open
 - [ ] Make dots persistend between sessions
-- [ ] Have user defined icons for dots 
 - [ ] Git integration
+- [ ] BST for decoration updating

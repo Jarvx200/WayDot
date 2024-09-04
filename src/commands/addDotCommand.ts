@@ -29,14 +29,16 @@ const addDotCommand = async(context: vscode.ExtensionContext) => {
     newDotInfo.dotName = `dot-${(context.globalState.get<Dot[]>("waydot.Dots")?.length)}` || "dot-x";
 
 
-    const emojiOptions : EmojiSelectionType[] = [
-        {label: "🐛 Bug"},
-        {label: "💡 Idea"},
-        {label: "⚙️ Refactor"},
-        {label: "🧑‍🔬 Test"},
-        {label: "📑 Default"}
-        //TODO: more to be added + custom user settings
-    ];
+    const config = vscode.workspace.getConfiguration("waydot");
+    let emojiOptions : EmojiSelectionType[] | null =  null;
+    if (config){
+        emojiOptions = config.get<EmojiSelectionType[]>("dotTypes") || null;
+    };
+
+    if(!emojiOptions){
+        vscode.window.showErrorMessage("Could not load dot types!");
+        return;
+    }
 
     const waydotIcon = await vscode.window.showQuickPick(emojiOptions, {
         canPickMany: false,

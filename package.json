@@ -30,7 +30,24 @@
         "command": "waydot.listDots",
         "title": "List Dots"
       }
-    ]
+    ],
+    "configuration":{
+      "title": "Waydot Config",
+      "properties": {
+        "waydot.dotTypes":{
+          "default":[
+            {"label": "🐛 Bug"},
+            {"label": "💡 Idea"},
+            {"label": "⚙️ Refactor"},
+            {"label": "🧑‍🔬 Test"},
+            {"label": "🗣️ Discussion"},
+            {"label": "📑 Default"}
+          ],
+          "description": "The waydot predefined types!",
+          "type":"object"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
